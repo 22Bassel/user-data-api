@@ -1,0 +1,28 @@
+INSERT INTO USERS (id, voorNaam, achterNaam, email, password, role)
+VALUES
+    (1,'Adam', 'User', 'admin@example.com', '$2a$10$iletpdKiTRfS9evszK8tQ.oMSWbhy1FPlYup/Z.QpWCwdiIzK3oXW', 'Admin'),
+    (2,'Student', 'Van Den Berg', 'student@example.com', '$2a$10$qgfM9AimMHe1GDG9yGoIg.S6c2o3vPmPhAV2DdpUFAtKh5fUuc52u', 'User'),
+    (3,'Business', 'Owner', 'business@example.com', '$2a$10$I0hILdkFYlfQmPb7dPQfPeIUQebt9zQXc0tO8CKFGczTv1oqagsrm', 'User'),
+    (4,'Freelancer', 'Smith', 'freelancer@example.com', '$2a$10$XHhN17WB5rkACG.oa/x0aeb4H7hD8B.IKnqu5lC9/e4KpjVDV6ALC', 'User'),
+    (5,'Retired', 'Johnson', 'retired@example.com', '$2a$10$clM6da.0QP2VNwQY/WFlDeYaB0wc6goHiFdypr6aicMeAa3IbefP.', 'User'),
+    (6,'Regular', 'User', 'user@example.com', '$2a$10$W.SXbElstMrzRfI.OU.oy.6oUQJ5H/QrvVSznFyqnRLmQFYk4MMNe', 'User')
+ON CONFLICT DO NOTHING;
+
+-- Insert sample belastingen (tax records)
+INSERT INTO BELASTINGEN (userid, belastingsoort, belastingJaar, inkomen, belastingBedrag)
+VALUES
+    (1, 'Inkomen', 2023, 50000.0, 10000.0),
+    (1, 'Inkomen', 2024, 48000.0, 9500.0),
+    (1, 'Inkomen', 2025, 60000.0, 12000.0),
+    (1, 'Inkomen', 2026, 15000.0, 3000.0),
+
+    (2, 'Inkomen', 2025, 42000.0, 7500.0),
+    (2, 'Inkomen', 2026, 45000.0, 8000.0),
+
+    (3, 'Inkomen', 2026, 35000.0, 6000.0),
+
+    (4, 'Inkomen', 2025, 8000.0, 1600.0),
+
+    (5, 'Inkomen', 2022, 38000.0, 6500.0),
+    (5, 'Inkomen', 2024, 10000.0, 2000.0)
+ON CONFLICT DO NOTHING;
