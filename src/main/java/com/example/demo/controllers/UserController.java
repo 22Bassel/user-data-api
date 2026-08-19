@@ -22,11 +22,11 @@ public class UserController {
     }
 
     @PostMapping("/User")
-    public ResponseEntity<?> niewueUser(@RequestBody RequestNieuweUser NieweUser){
+    public ResponseEntity<?> nieuweUser(@RequestBody RequestNieuweUser NieweUser){
         if(userService.BestondAlDitEmail(NieweUser.getEmail())){
             return ResponseEntity.status(HttpStatus.CONFLICT).body(Map.of("message","Deze email bestond al!!"));
         }
-        return ResponseEntity.status(HttpStatus.CREATED).body(userService.niewueUser(NieweUser));
+        return ResponseEntity.status(HttpStatus.CREATED).body(userService.nieuweUser(NieweUser));
     }
 
     @PreAuthorize("#id == authentication.principal.id or hasRole('ADMIN')")

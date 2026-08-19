@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,7 +31,7 @@ public class UserControllerTest {
 
 
     @Test
-    public void NiewueUserTest_EmailBestaatAl() {
+    public void nieuweUserTest_EmailBestaatAl() {
         // Arrange
         RequestNieuweUser user = new RequestNieuweUser("a", "b", "b@gmail.com", "c", Role.User);
 
@@ -40,7 +39,7 @@ public class UserControllerTest {
         when(userService.BestondAlDitEmail(anyString())).thenReturn(true);
 
         // Act
-        ResponseEntity<ResponseUser> response=(ResponseEntity<ResponseUser>)userController.niewueUser(user);
+        ResponseEntity<ResponseUser> response=(ResponseEntity<ResponseUser>)userController.nieuweUser(user);
 
         // Assert
         assertNotNull(response);
@@ -50,7 +49,7 @@ public class UserControllerTest {
     }
 
     @Test
-    public void NiewueUserTest_NieuweUserToevoegen() {
+    public void nieuweUserTest_NieuweUserToevoegen() {
         // Arrange
         RequestNieuweUser requestUser = new RequestNieuweUser("a", "b", "b@gmail.com", "c", Role.User);
         ResponseUser expectedUser = new ResponseUser(1L, "a", "b", "b@gmail.com", Role.User,new ArrayList<>());
@@ -58,10 +57,10 @@ public class UserControllerTest {
         // Mock service to return false (email does not exist)
         when(userService.BestondAlDitEmail(anyString())).thenReturn(false);
         // Mock service to return the created user
-        when(userService.niewueUser(requestUser)).thenReturn(expectedUser);
+        when(userService.nieuweUser(requestUser)).thenReturn(expectedUser);
 
         // Act
-        ResponseEntity<ResponseUser> response=(ResponseEntity<ResponseUser>)userController.niewueUser(requestUser);
+        ResponseEntity<ResponseUser> response=(ResponseEntity<ResponseUser>)userController.nieuweUser(requestUser);
 
         // Assert
         assertNotNull(response);
@@ -71,7 +70,7 @@ public class UserControllerTest {
 
         // Verify service methods were called
         verify(userService, times(1)).BestondAlDitEmail("b@gmail.com");
-        verify(userService, times(1)).niewueUser(requestUser);
+        verify(userService, times(1)).nieuweUser(requestUser);
     }
 
 

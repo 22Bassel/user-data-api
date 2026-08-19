@@ -28,9 +28,8 @@ public class BelastingService {
     }
 
     public List<ResponseBelasting> NieuweInkomenBelastingToevoegen(Long id, double inkomen, int jaar) {
-        Optional<UserEntity> optionalUserEntity = Optional.of(userRepo.findById(id).orElseThrow(() -> new RuntimeException("USER NOT FOUND!")));
+        UserEntity user = userRepo.findById(id).orElseThrow(() -> new RuntimeException("USER NOT FOUND!"));
 
-        UserEntity user=optionalUserEntity.get();
         user.addBelastingen(nieuweBelastingmaken("Inkomen", inkomen, jaar));
 
         userRepo.save(user);

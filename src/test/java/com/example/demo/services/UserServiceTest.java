@@ -27,14 +27,14 @@ public class UserServiceTest {
     private UserRepo database;
 
     @Test
-    public void testNiewueUser() {
+    public void testNieuweUser() {
         // Arrange
         RequestNieuweUser request = new RequestNieuweUser("John", "Doe", "john@example.com", "password", Role.User);
 
         when(database.save(any())).thenReturn(new UserEntity(1L, "John", "Doe", "john@example.com", "password", Role.User,new ArrayList<>()));
 
         // Act
-        ResponseUser result = userService.niewueUser(request);
+        ResponseUser result = userService.nieuweUser(request);
 
         // Assert
         assertNotNull(result);

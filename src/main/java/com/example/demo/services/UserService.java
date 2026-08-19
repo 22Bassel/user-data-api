@@ -23,7 +23,7 @@ public class UserService {
     }
 
 
-    public ResponseUser niewueUser(RequestNieuweUser user){
+    public ResponseUser nieuweUser(RequestNieuweUser user){
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
 
