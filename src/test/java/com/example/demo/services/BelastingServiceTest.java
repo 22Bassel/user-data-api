@@ -135,8 +135,6 @@ public class BelastingServiceTest {
     public void testGetBelastingen_Success() {
         // Arrange
         Long userId = 1L;
-        UserEntity user = new UserEntity();
-        user.setId(userId);
 
         BelastingEntity belasting1 = new BelastingEntity();
         belasting1.setBelastingsoort("Inkomen");
@@ -150,9 +148,11 @@ public class BelastingServiceTest {
         belasting2.setInkomen(60000.0);
         belasting2.setBelastingBedrag(12000.0);
 
-        user.setBelastingen(Arrays.asList(belasting1, belasting2));
+        List<BelastingEntity> belastingEntities=new ArrayList<>();
+        belastingEntities.add(belasting1);
+        belastingEntities.add(belasting2);
 
-        when(userRepo.findById(userId)).thenReturn(Optional.of(user));
+        when(belastingRepo.findByUserId(userId)).thenReturn(belastingEntities);
 
         // Act
         List<ResponseBelasting> result = belastingService.GetBelastingen(userId);
