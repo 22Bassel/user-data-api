@@ -174,9 +174,6 @@ public class BelastingServiceTest {
         Long userId = 1L;
         int jaar = 2023;
 
-        UserEntity user = new UserEntity();
-        user.setId(userId);
-
         BelastingEntity belasting1 = new BelastingEntity();
         belasting1.setBelastingsoort("Inkomen");
         belasting1.setBelastingJaar(jaar);
@@ -189,9 +186,11 @@ public class BelastingServiceTest {
         belasting2.setInkomen(60000.0);
         belasting2.setBelastingBedrag(12000.0);
 
-        user.setBelastingen(Arrays.asList(belasting1,belasting2));
+        List<BelastingEntity> belastingEntities=new ArrayList<>();
+        belastingEntities.add(belasting1);
+        belastingEntities.add(belasting2);
 
-        when(userRepo.findById(userId)).thenReturn(Optional.of(user));
+        when(belastingRepo.findByUserId(userId)).thenReturn(belastingEntities);
 
         // Act
         List<ResponseBelasting> result = belastingService.GetBelastingeninJaar(userId, jaar);
@@ -211,11 +210,10 @@ public class BelastingServiceTest {
         Long userId = 1L;
         int jaar = 2023;
 
-        UserEntity user = new UserEntity();
-        user.setId(userId);
-        user.setBelastingen(new ArrayList<>());
 
-        when(userRepo.findById(userId)).thenReturn(Optional.of(user));
+        List<BelastingEntity> belastingEntities=new ArrayList<>();
+
+        when(belastingRepo.findByUserId(userId)).thenReturn(belastingEntities);
 
         // Act
         List<ResponseBelasting> result = belastingService.GetBelastingeninJaar(userId, jaar);
