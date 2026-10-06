@@ -6,7 +6,13 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name ="BELASTINGEN")
+@Table(name ="BELASTINGEN", indexes = {
+        @Index(name="idx_unique_user_jaar_type",
+                columnList = "USERID, BELASTINGJAAR, BELASTINGSOORT",
+                unique = true
+        )
+    }
+)
 @Getter
 @Setter
 @NoArgsConstructor

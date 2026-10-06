@@ -6,7 +6,7 @@ VALUES
     (4,'Freelancer', 'Smith', 'freelancer@example.com', '$2a$10$XHhN17WB5rkACG.oa/x0aeb4H7hD8B.IKnqu5lC9/e4KpjVDV6ALC', 'User'),
     (5,'Retired', 'Johnson', 'retired@example.com', '$2a$10$clM6da.0QP2VNwQY/WFlDeYaB0wc6goHiFdypr6aicMeAa3IbefP.', 'User'),
     (6,'Regular', 'User', 'user@example.com', '$2a$10$W.SXbElstMrzRfI.OU.oy.6oUQJ5H/QrvVSznFyqnRLmQFYk4MMNe', 'User')
-ON CONFLICT DO NOTHING;
+ON CONFLICT (id) DO NOTHING;
 
 -- Insert sample belastingen (tax records)
 INSERT INTO BELASTINGEN (userid, belastingsoort, belastingJaar, inkomen, belastingBedrag)
@@ -25,4 +25,4 @@ VALUES
 
     (5, 'Inkomen', 2022, 38000.0, 6500.0),
     (5, 'Inkomen', 2024, 10000.0, 2000.0)
-ON CONFLICT DO NOTHING;
+ON CONFLICT (userid, belastingsoort, belastingJaar) DO NOTHING;
