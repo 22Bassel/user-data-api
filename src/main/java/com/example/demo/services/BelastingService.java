@@ -75,9 +75,8 @@ public class BelastingService {
 
     public List<ResponseBelasting> GetBelastingeninJaar(Long id, int jaar){
 
-        Optional<UserEntity> optionalUserEntity = Optional.of(userRepo.findById(id).orElseThrow(() -> new RuntimeException("USER NOT FOUND!")));
-
-        return optionalUserEntity.get().getBelastingen().stream()
+        return belastingRepo.findByUserId(id)
+                .stream()
                 .filter(b->b.getBelastingJaar()==jaar)
                 .map(ResponseBelasting::NaarDTO)
                 .toList();
