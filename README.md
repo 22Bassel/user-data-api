@@ -1,5 +1,4 @@
-Een REST API voor een eenvoudig belastingsysteem.
-
+Een REST API voor het beheren van gebruikers en belastinggegevens.
 
 ## Functionaliteiten
 - Gebruikers registreren, inloggen en hun account verwijderen
