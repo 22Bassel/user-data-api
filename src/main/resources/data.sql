@@ -1,12 +1,12 @@
-INSERT INTO USERS (id, voorNaam, achterNaam, email, password, role)
+INSERT INTO USERS ( voorNaam, achterNaam, email, password, role)
 VALUES
-    (1,'Adam', 'User', 'admin@example.com', '$2a$10$iletpdKiTRfS9evszK8tQ.oMSWbhy1FPlYup/Z.QpWCwdiIzK3oXW', 'Admin'),
-    (2,'Student', 'Van Den Berg', 'student@example.com', '$2a$10$qgfM9AimMHe1GDG9yGoIg.S6c2o3vPmPhAV2DdpUFAtKh5fUuc52u', 'User'),
-    (3,'Business', 'Owner', 'business@example.com', '$2a$10$I0hILdkFYlfQmPb7dPQfPeIUQebt9zQXc0tO8CKFGczTv1oqagsrm', 'User'),
-    (4,'Freelancer', 'Smith', 'freelancer@example.com', '$2a$10$XHhN17WB5rkACG.oa/x0aeb4H7hD8B.IKnqu5lC9/e4KpjVDV6ALC', 'User'),
-    (5,'Retired', 'Johnson', 'retired@example.com', '$2a$10$clM6da.0QP2VNwQY/WFlDeYaB0wc6goHiFdypr6aicMeAa3IbefP.', 'User'),
-    (6,'Regular', 'User', 'user@example.com', '$2a$10$W.SXbElstMrzRfI.OU.oy.6oUQJ5H/QrvVSznFyqnRLmQFYk4MMNe', 'User')
-ON CONFLICT (id) DO NOTHING;
+    ('Adam', 'User', 'admin@example.com', '$2a$10$iletpdKiTRfS9evszK8tQ.oMSWbhy1FPlYup/Z.QpWCwdiIzK3oXW', 'Admin'),
+    ('Student', 'Van Den Berg', 'student@example.com', '$2a$10$qgfM9AimMHe1GDG9yGoIg.S6c2o3vPmPhAV2DdpUFAtKh5fUuc52u', 'User'),
+    ('Business', 'Owner', 'business@example.com', '$2a$10$I0hILdkFYlfQmPb7dPQfPeIUQebt9zQXc0tO8CKFGczTv1oqagsrm', 'User'),
+    ('Freelancer', 'Smith', 'freelancer@example.com', '$2a$10$XHhN17WB5rkACG.oa/x0aeb4H7hD8B.IKnqu5lC9/e4KpjVDV6ALC', 'User'),
+    ('Retired', 'Johnson', 'retired@example.com', '$2a$10$clM6da.0QP2VNwQY/WFlDeYaB0wc6goHiFdypr6aicMeAa3IbefP.', 'User'),
+    ('Regular', 'User', 'user@example.com', '$2a$10$W.SXbElstMrzRfI.OU.oy.6oUQJ5H/QrvVSznFyqnRLmQFYk4MMNe', 'User')
+ON CONFLICT (email) DO NOTHING;
 
 -- Insert sample belastingen (tax records)
 INSERT INTO BELASTINGEN (userid, belastingsoort, belastingJaar, inkomen, belastingBedrag)

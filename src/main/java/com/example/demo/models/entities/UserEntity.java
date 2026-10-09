@@ -23,7 +23,7 @@ public class UserEntity {
     private String voorNaam;
     @Column(name = "ACHTERNAAM")
     private String achterNaam;
-    @Column(name = "EMAIL")
+    @Column(name = "EMAIL", unique = true)
     private String email;
     @Column(name = "PASSWORD")
     private String password;
