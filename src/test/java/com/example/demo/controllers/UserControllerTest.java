@@ -33,7 +33,7 @@ public class UserControllerTest {
     @Test
     public void nieuweUserTest_EmailBestaatAl() {
         // Arrange
-        RequestNieuweUser user = new RequestNieuweUser("a", "b", "b@gmail.com", "c", Role.User);
+        RequestNieuweUser user = new RequestNieuweUser("a", "b", "b@gmail.com", "c");
 
         // Mock service to return true (email exists)
         when(userService.BestondAlDitEmail(anyString())).thenReturn(true);
@@ -51,7 +51,7 @@ public class UserControllerTest {
     @Test
     public void nieuweUserTest_NieuweUserToevoegen() {
         // Arrange
-        RequestNieuweUser requestUser = new RequestNieuweUser("a", "b", "b@gmail.com", "c", Role.User);
+        RequestNieuweUser requestUser = new RequestNieuweUser("a", "b", "b@gmail.com", "c");
         ResponseUser expectedUser = new ResponseUser(1L, "a", "b", "b@gmail.com", Role.User,new ArrayList<>());
 
         // Mock service to return false (email does not exist)

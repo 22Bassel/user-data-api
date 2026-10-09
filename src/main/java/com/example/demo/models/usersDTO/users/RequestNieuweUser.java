@@ -14,6 +14,5 @@ public class RequestNieuweUser{
     String achterName;
     String email;
     String password;
-    Role Role;
 
 }

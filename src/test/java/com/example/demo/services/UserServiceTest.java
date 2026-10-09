@@ -10,6 +10,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.ArrayList;
 import java.util.Optional;
@@ -26,10 +27,17 @@ public class UserServiceTest {
     @Mock
     private UserRepo database;
 
+    @Mock
+    private PasswordEncoder passwordEncoder;
+
+
     @Test
     public void testNieuweUser() {
+
+        when(passwordEncoder.encode(anyString())).thenReturn("gehashtWachtwoord");
+
         // Arrange
-        RequestNieuweUser request = new RequestNieuweUser("John", "Doe", "john@example.com", "password", Role.User);
+        RequestNieuweUser request = new RequestNieuweUser("John", "Doe", "john@example.com", "password");
 
         when(database.save(any())).thenReturn(new UserEntity(1L, "John", "Doe", "john@example.com", "password", Role.User,new ArrayList<>()));
 
@@ -40,6 +48,7 @@ public class UserServiceTest {
         assertNotNull(result);
         assertEquals("John", result.getVoorName());
         assertEquals("john@example.com", result.getEmail());
+        assertEquals(Role.User, result.getRole());
         verify(database, times(1)).save(any());
     }
     @Test

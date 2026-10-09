@@ -39,7 +39,7 @@ public class UserEntity {
                 .achterNaam(user.getAchterName())
                 .email(user.getEmail())
                 .password(user.getPassword())
-                .Role(user.getRole())
+                .Role(com.example.demo.enums.Role.User)
                 .build();
     }
 
