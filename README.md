@@ -2,8 +2,8 @@ Een REST API voor een eenvoudig belastingsysteem.
 
 
 ## Functionaliteiten
-- Gebruikers registreren en inloggen
-- Belastingen toevoegen, bekijken en verwijderen
+- Gebruikers registreren, inloggen en hun account verwijderen
+- Belastingen toevoegen en bekijken
 - Beveiliging met JWT en rollen (admin en gebruiker)
 - Elke gebruiker heeft alleen toegang tot zijn eigen gegevens
 - Wachtwoorden worden versleuteld opgeslagen met BCrypt
